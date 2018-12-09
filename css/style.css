@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0px;
+}
+
+body {
+    background-color: #f5f0eb3b;
+}
+
+/* login */
+
+
+.kosong {
+
+    margin: 10px auto;
+    width: 250px;
+    box-shadow: 5px 5px 10px 5px rgba(233, 236, 223, 0.62);
+}
+
+.judul {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 120px;
+}
+
+
+/* akhir login */
