@@ -9,7 +9,6 @@ body {
 
 /* login */
 
-
 .kosong {
 
     margin: 10px auto;
@@ -24,5 +23,30 @@ body {
     margin-top: 120px;
 }
 
-
 /* akhir login */
+
+/* nav */
+.navbar {
+    position: relative;
+    z-index: 1;
+}
+
+nav-link {
+    color: #ffff;
+}
+
+/* akhir nav */
+
+
+/* jumbotron */
+
+
+.jbr {
+    margin-top: -60px;
+}
+
+
+/* akhir jumbotron */
+
+
+@media (min-width: 992px) {}

@@ -24,4 +24,29 @@ function kirim($data){
 };
 
 
+function posting($upload){
+
+
+global $conn;
+$gambar = $upload['gambar'];
+$judul = $upload['judul'];
+$lokasi = $upload['location'];
+$tanggal = $upload['tanggal'];
+$kontak = $upload['kontak'];
+$deskripsi = $upload['deskripsi'];
+
+        $query= "INSERT INTO upload_post
+        
+                        VALUES   
+('','$gambar','$judul','$lokasi','$tanggal','$kontak','$deskripsi')";
+
+mysqli_query($conn,$query);
+
+return mysqli_affected_rows($conn);
+
+
+}
+
+
 ?>
+
