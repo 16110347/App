@@ -3,28 +3,32 @@
 require ('php/logic.php');
 
 if(isset($_POST["kirim"])){
+  var_dump ($_POST);
+  var_dump ($_FILES);
+  die;
+  // if(posting($_POST) > 0){
+  
+  
+  //   // echo "<script>
+            
+  //   //             alert('berhasil di tambahkan !!!');
+  //   //             document.location.href='#';
+            
+  //   //         </script>";
  
-  if(posting($_POST) > 0){
-    echo "<script>
+  //         }else {
+  //            echo "<script>
             
-                alert('berhasil di tambahkan !!!');
-                document.location.href='#';
+  //               alert(' tydac berhasil di tambahkan !!!');
+  //               document.location.href='#';
             
-            </script>";
- 
-          }else {
-             echo "<script>
-            
-                alert(' tydac berhasil di tambahkan !!!');
-                document.location.href='#';
-            
-            </script>";
-          };
+  //           </script>";
+  //         };
 
 
 };
 
-
+//https://www.facebook.com/?ref=tn_tnmn
 
 
 ?>
@@ -120,7 +124,7 @@ if(isset($_POST["kirim"])){
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
     
   
-  <form action="" method="post">
+  <form action="" method="post" enctype="multipart/form-data" >
     <div class="form-group">
       <label for="">masukan Gambar</label>
       <input type="file"

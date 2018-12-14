@@ -28,12 +28,20 @@ function posting($upload){
 
 
 global $conn;
-$gambar = $upload['gambar'];
+
+
 $judul = $upload['judul'];
 $lokasi = $upload['location'];
 $tanggal = $upload['tanggal'];
 $kontak = $upload['kontak'];
 $deskripsi = $upload['deskripsi'];
+
+$gambar = gambar();
+       if(!$gambar){
+   
+        return false;
+   
+    };
 
         $query= "INSERT INTO upload_post
         
@@ -47,6 +55,57 @@ return mysqli_affected_rows($conn);
 
 }
 
+function gambar(){
+
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmp = $_FILES['gambar']['tmp_name'];
+
+    // pilih img
+    if($error === 4){
+        echo "<script>
+        
+                alert('Masukan Gambar dulu');
+        
+        </script>";
+        return false;
+    }
+
+    $ekstensiGambarValid = ['jpg','jpeg','png'];
+    $ekstensiGambar = explode('.',$namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+    if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
+        
+        echo "<script>
+        
+            alert('yang anda upload bukan gambar');
+        
+        
+        </script>";
+
+        return false;
+    }
+
+ if($ukuranFile > 1000000){
+
+    echo "<script>
+    
+            alert('pilihan gambar terlalu besar');
+    
+    </script>";
+    return false;
+ }
+ move_uploaded_file($tmp,'img'.$namaFile);
+ return $namaFile;
+
+}
+
+
+//  img(){
+//      $namaFile = $_FILES
+//  }
 
 ?>
 
