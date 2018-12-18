@@ -1,0 +1,39 @@
+body {
+    background-color: orange;
+}
+
+.kotak {
+    width: 300px;
+    /* border: 1px solid black; */
+    margin: 50% auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    padding: 50px;
+}
+
+.kotak::before {
+    content: "E-event";
+    display: block;
+    position: relative;
+    text-align: center;
+    line-height: 40px;
+    background-color: #fff;
+    border-radius: 40px;
+    width: 80px;
+    height: 50px;
+    top: -75px;
+    left: 55px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+
+}
+
+input {
+    margin-top: 5px;
+    margin: 5px;
+    /* border-radius: 10px; */
+    border: 0;
+
+}
+
+button {
+    margin-top: 10px;
+}
