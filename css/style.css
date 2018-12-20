@@ -49,4 +49,21 @@ nav-link {
 /* akhir jumbotron */
 
 
+/* halaman  */
+
+.img {
+    width: 180px;
+    height: 100px;
+}
+
+p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    width: 300px;
+}
+
+/* akhir halaman */
+
 @media (min-width: 992px) {}

@@ -4,6 +4,18 @@ $conn = mysqli_connect("localhost","root","","E-vent");
 
 //var_dump($conn);
 
+// tampil data upload
+
+$result = mysqli_query($conn,"SELECT * FROM upload_post");
+
+// while ($upload = mysqli_fetch_assoc($result)){
+
+// var_dump($upload["judul"]);
+//     }
+
+
+
+//tambah user baru
 function kirim($data){
     global $conn;
     $nama = $data['nama'];
@@ -23,7 +35,7 @@ function kirim($data){
     return mysqli_affected_rows($conn);
 };
 
-
+//upload postingan
 function posting($upload){
 
 
@@ -54,6 +66,11 @@ return mysqli_affected_rows($conn);
 
 
 }
+
+
+ 
+  //0755 adalah permision untuk folder dan 0644 permision untuk file
+ 
 
 function gambar(){
 
@@ -97,11 +114,21 @@ function gambar(){
     </script>";
     return false;
  }
- move_uploaded_file($tmp,'img'.$namaFile);
+
+ move_uploaded_file($tmp,'img/'.$namaFile);
+
  return $namaFile;
 
 }
 
+
+function cari($data){
+    global $conn;
+    $query = "SELECT * FROM upload_post WHERE judul = '$data'";
+    $result =mysqli_query($conn,$query);
+
+    return $row;
+}
 
 //  img(){
 //      $namaFile = $_FILES

@@ -3,30 +3,35 @@
 require ('php/logic.php');
 
 if(isset($_POST["kirim"])){
-  var_dump ($_POST);
-  var_dump ($_FILES);
-  die;
-  // if(posting($_POST) > 0){
+  // var_dump ($_POST);
+  // var_dump ($_FILES);
+  // die;
+  if(posting($_POST) > 0){
   
   
-  //   // echo "<script>
+    echo "<script>
             
-  //   //             alert('berhasil di tambahkan !!!');
-  //   //             document.location.href='#';
+                alert('berhasil di tambahkan !!!');
+                document.location.href='#';
             
-  //   //         </script>";
+            </script>";
  
-  //         }else {
-  //            echo "<script>
+          }else {
+             echo "<script>
             
-  //               alert(' tydac berhasil di tambahkan !!!');
-  //               document.location.href='#';
+                alert(' tydac berhasil di tambahkan !!!');
+                document.location.href='#';
             
-  //           </script>";
-  //         };
+            </script>";
+          };
 
 
-};
+}elseif (isset($_POST["cari"])) {
+  $cari = $_POST["keyword"];
+  $result = mysqli_query($conn, "SELECT * FROM upload_post WHERE judul ='$cari'");
+}
+
+
 
 //https://www.facebook.com/?ref=tn_tnmn
 
@@ -46,6 +51,7 @@ if(isset($_POST["kirim"])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>E-vent</title>
+  
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -69,9 +75,9 @@ if(isset($_POST["kirim"])){
       </li>
     </ul>
   </div>
-      <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline" method="post" action="" >
+      <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit">Cari</button>
     </form>
 </nav>
     </div>
@@ -106,7 +112,7 @@ if(isset($_POST["kirim"])){
 <div class="container">
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+    <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home?home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Daftar</a>
@@ -115,9 +121,76 @@ if(isset($_POST["kirim"])){
     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Pembayaran</a>
   </li>
 </ul>
+
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
+ <!-- halaman  -->
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
   
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+      
+  <div class="card-columns">
+        
+            
+            <?php include('page/pageHome.php') ?>
+
+
+      </div> 
+
+
+      </div>
+
+    </div>
+    
+    
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">nama:</label>
+            <input type="text" class="form-control" id="recipient-name">
+
+            <label for="recipient-name" class="col-form-label">nama:</label>
+            <input type="text" class="form-control" id="recipient-name">
+
+            <label for="recipient-name" class="col-form-label">nama:</label>
+            <input type="text" class="form-control" id="recipient-name">
+
+            <label for="recipient-name" class="col-form-label">nama:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+  
+  
+  
+  
+  </div>
+  <!-- akhir halaman -->
   
   
   <!-- Daftar -->
@@ -182,8 +255,6 @@ if(isset($_POST["kirim"])){
 
  <!-- akhir  halaman -->
  
-
-
 
 
 
