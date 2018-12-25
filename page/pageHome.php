@@ -1,9 +1,9 @@
 
 
- 
+  
+  <div class="card-columns">
     <?php while($row = mysqli_fetch_assoc($result)) : ?>
 
- 
 
 
 <div class="card">
@@ -15,11 +15,11 @@
             </div>
           </div>
 
+ <?php endwhile; ?>
 
-
+      </div> 
 
   
- <?php endwhile; ?>
 
  
             <!-- <div class="card">

@@ -6,7 +6,7 @@ $conn = mysqli_connect("localhost","root","","E-vent");
 
 // tampil data upload
 
-$result = mysqli_query($conn,"SELECT * FROM upload_post");
+$result = mysqli_query($conn,"SELECT * FROM upload_post ORDER BY id_upload DESC");
 
 // while ($upload = mysqli_fetch_assoc($result)){
 
@@ -129,6 +129,57 @@ function cari($data){
 
     return $row;
 }
+
+function daftar($data){
+    global $conn;
+
+
+    $user =  strtolower(stripslashes($data["nama"]));
+    $email = $data["email"];
+    $password = mysqli_real_escape_string( $conn, $data["password"]);
+    $password2 = mysqli_real_escape_string( $conn, $data["password1"]);
+    $alamat1 =strtolower(stripslashes($data["alamat_1"]));
+    $alamat2 =strtolower(stripslashes($data["alamat_2"]));
+    $kota =strtolower(stripslashes($data["kota"]));
+    $negara =strtolower(stripslashes($data["negara"]));
+    $kodepos =strtolower(stripslashes($data["kode_pos"]));
+
+
+    $result= mysqli_query($conn,"SELECT nama FROM User_Login WHERE nama ='$user'");
+   
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+        
+        alert('konfirmasi tidak sesuai');
+        
+        </script>";
+
+        return false;
+    }
+    
+    
+    
+    if($password !== $password2){
+        echo "<script>
+        
+            alert('konfirmasi tidak sesuai');
+        
+        </script>";
+
+         return false;
+    }
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    
+    mysqli_query($conn, "INSERT INTO User_Login VALUES
+                        ('','$user','$email','$password','$alamat1','$alamat2','$kota','$negara','$kodepos')");
+     
+     return mysqli_affected_rows($conn);
+
+}
+
+
+
 
 //  img(){
 //      $namaFile = $_FILES

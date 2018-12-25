@@ -1,5 +1,12 @@
 <?php 
+session_start();
 
+if(!isset($_SESSION["login"])){
+
+
+  header("Location: page/masuk.php");
+ exit;
+}
 require ('php/logic.php');
 
 if(isset($_POST["kirim"])){
@@ -78,6 +85,8 @@ if(isset($_POST["kirim"])){
       <form class="form-inline" method="post" action="" >
       <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit">Cari</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit"><a href="page/masuk.php">masuk</a></button>
+      <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit"><a href="page/keluar.php">Keluar</a></button>
     </form>
 </nav>
     </div>
@@ -112,7 +121,7 @@ if(isset($_POST["kirim"])){
 <div class="container">
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home?home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+    <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Daftar</a>
@@ -130,13 +139,13 @@ if(isset($_POST["kirim"])){
     <div class="row">
       <div class="col-lg">
       
-  <div class="card-columns">
+
         
             
             <?php include('page/pageHome.php') ?>
 
 
-      </div> 
+
 
 
       </div>
@@ -240,7 +249,9 @@ if(isset($_POST["kirim"])){
   
   
   
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+  
+  </div>
 </div>  
 
 </div>
