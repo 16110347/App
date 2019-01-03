@@ -18,14 +18,14 @@ $result = mysqli_query($conn,"SELECT * FROM upload_post ORDER BY id_upload DESC"
 //tambah user baru
 function kirim($data){
     global $conn;
-    $nama = $data['nama'];
-    $email = $data['email'];
-    $password = $data['password'];
-    $alamat = $data['alamat_1'];
-    $alamat2 = $data['alamat_2'];
-    $negara = $data['negara'];
-    $kota = $data['kota'];
-    $kodePos = $data['kode_pos'];
+    $nama = htmlspecialchars($data['nama']);
+    $email =htmlspecialchars($data['email']);
+    $password =htmlspecialchars($data['password']);
+    $alamat =htmlspecialchars($data['alamat_1']) ;
+    $alamat2 = htmlspecialchars($data['alamat_2']);
+    $negara =htmlspecialchars($data['negara']);
+    $kota =htmlspecialchars($data['kota']);
+    $kodePos =htmlspecialchars($data['kode_pos']);
 
     $query = "INSERT INTO User_Login
                 VALUES
