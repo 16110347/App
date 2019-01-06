@@ -36,6 +36,20 @@ if(isset($_POST["kirim"])){
 }elseif (isset($_POST["cari"])) {
   $cari = $_POST["keyword"];
   $result = mysqli_query($conn, "SELECT * FROM upload_post WHERE judul ='$cari'");
+}elseif(isset($_POST["daftar"])){
+  if(bayar($_POST) > 0){
+    echo "<script>
+    alert('berhasil bayar');
+    document.location.href='#';
+    
+    </script>";
+  }else{
+    echo "<script>
+    alert('berhasil bayar');
+    document.location.href='#';
+    
+    </script>";
+  }
 }
 
 
@@ -72,21 +86,21 @@ if(isset($_POST["kirim"])){
     <a class="navbar-brand" href="#">E-vent</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="#"></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">Contac Us</a>
+        <a class="nav-link " href="#"></a>
       </li>
     </ul>
   </div>
       <form class="form-inline" method="post" action="" >
       <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit">Cari</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit"><a href="page/masuk.php">masuk</a></button>
-      <button class="btn btn-outline-success my-2 my-sm-0" name="cari" type="submit"><a href="page/keluar.php">Keluar</a></button>
+      <button class="btn btn-primary my-2 my-sm-0" style="margin-right:3px;" name="cari" type="submit">Cari</button>
+      <button class="btn btn-primary my-2 my-sm-0" style="margin-right:3px;" name="cari" type="submit"><a style="color:white"; href="page/masuk.php">masuk</a></button>
+      <button class="btn btn-primary my-2 my-sm-0" style="margin-right:3px;" name="cari" type="submit"><a style="color:white";  href="page/keluar.php">Keluar</a></button>
     </form>
 </nav>
     </div>
@@ -118,7 +132,7 @@ if(isset($_POST["kirim"])){
 
  <!-- halaman -->
 
-<div class="container">
+<div class="container "style="margin-top:7px;">
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item">
     <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
@@ -127,7 +141,7 @@ if(isset($_POST["kirim"])){
     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Daftar</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Pembayaran</a>
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
   </li>
 </ul>
 
@@ -157,36 +171,39 @@ if(isset($_POST["kirim"])){
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Join Event</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="post">
+
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">nama:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" name="nama" class="form-control" id="recipient-name">
 
-            <label for="recipient-name" class="col-form-label">nama:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">no tel:</label>
+            <input type="tel" name="telp" class="form-control" id="recipient-name">
 
-            <label for="recipient-name" class="col-form-label">nama:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">email:</label>
+            <input type="email" name="email" class="form-control" id="recipient-name">
 
-            <label for="recipient-name" class="col-form-label">nama:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">norek:</label>
+            <input type="text" name="norek" class="form-control" id="recipient-name">
+               <small id="helpId" class="form-text text-muted">no.rek Mandiri:111111101</small>
+
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <label for="message-text" class="col-form-label">Alasan Ikut:</label>
+            <textarea class="form-control"name="alasan" id="message-text"></textarea>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" name="daftar" class="btn btn-primary">Daftar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -248,10 +265,11 @@ if(isset($_POST["kirim"])){
   <!-- akhir Daftar -->
   
   
-  
+  <!-- awal pembayaran -->
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-  
-  </div>
+       
+    </div>
+    <!-- akhir pembayaran -->
 </div>  
 
 </div>

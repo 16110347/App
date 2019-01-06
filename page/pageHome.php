@@ -7,11 +7,11 @@
 
 
 <div class="card">
-            <img class="card-img-top img" src="img/<?php echo $row["gambar"];?>" alt="">
+            <img class="card-img-top" src="img/<?php echo $row["gambar"];?>" alt="">
             <div class="card-body">
               <h4 class="card-title"><?= $row["judul"];?></h4>
-             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Dafatar</button>
-              <p class="card-text"><?= $row["deskripsi"];?></p>
+             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Join</button>
+              <p style=" margin-top:5px;" class="card-text"><?= $row["deskripsi"];?></p>
             </div>
           </div>
 

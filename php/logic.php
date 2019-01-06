@@ -178,6 +178,21 @@ function daftar($data){
 
 }
 
+function bayar($data){
+    global $conn;
+    $nama = $data["nama"];
+    $noTel = $data["telp"];
+    $email = $data["email"];
+    $norek = $data["norek"];
+    $alasan = $data["alasan"];
+
+    $query ="INSERT INTO tabelJoin
+     VALUES 
+     ('','$nama','$noTel','$email','$norek','$alasan')";
+
+     mysqli_query($conn,$query);
+     return mysqli_affected_rows($conn);
+}
 
 
 

@@ -1,7 +1,7 @@
-* {
+/* * {
     margin: 0;
     padding: 0px;
-}
+} */
 
 body {
     background-color: #f5f0eb3b;
@@ -52,8 +52,8 @@ nav-link {
 /* halaman  */
 
 .img {
-    width: 180px;
-    height: 100px;
+    width: 400px;
+    height: 20%;
 }
 
 p {
@@ -67,7 +67,6 @@ p {
 /* akhir halaman */
 
 /* login masuk */
-
 
 .form_login {
     /*membuat lebar form penuh*/
